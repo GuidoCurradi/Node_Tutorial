@@ -1,0 +1,17 @@
+L'Event Loop è ciò che consente a Node.js di eseguire operazioni di I/O "bloccati, nonostante Javascript stia single-thread.
+Poiché la maggior parte dei kernel moderni sono multi-thread, ovviamente possono gestire molteplici operazioni che lavorano
+in background. Quando una di quest'ultime è portata a termine, il kernel "comunica" a node.js che il callback appropriato più
+essere aggiunto in coda e alla fine eseguito.
+
+Ogni fase che compone l'Event Loop è composta da una coda FIFO di callback da eseguire. Ovviamente, quando l'Event Loop entra
+in una specifica fase, quest'ultimo eseguirà ogni operazioni specifica per quest'ultima ed eseguire i callback finquando la 
+coda non è esausta o finché non è stato raggiunto il numero di richiami massimo. Quando ciò avviene, l'evento passerà alla fase 
+successiva e così via. 
+
+--FASI PRINCIPALI--
+1) Timer: esegue i callback ianificati dal "setTimeout()" - "setInterval()";
+2) Callback in sospeso: esegue i callback I/O differiti al ciclo successivo;
+3) Idle
+4) Sondaggio: recupera i nuovi eventi I/O, esegue i callback correlati.
+5) Verifica: vengono invocati i callback;
+6) Callback close
