@@ -1,0 +1,10 @@
+Nelle applicazioni Node.js, non è insolito vedere un gran numero di funzioni callback nidificate utilizzate per svolgere diverse attività.
+Questo è comunemente indicato col termine di "callback hell", in quanto può rendere il codice estremamente complicato e disorganizzato. In 
+JS c'è una soluzione definita "Promise" che risolve il suddetto problema. 
+
+Una Promise è essenzialmente un miglioramento della gestione di tutte le attività dei dati asincroni delle funzioni di callback. In particolare,
+rappresenta un attività che avrà tre soli "stati":
+1) Suspend: è lo stato iniziali che si verifica quando viene invocata una Promise. Mentre è in questo stato, la funzione chiamante continua
+            a funzionare fino a quando la Promise non viene completata e i dati restituiti;
+2) Resolve: indica che la Promise ha avuto successo e che i dati vengono passati al .then();
+3) Reject: indica che una Promise è stata negata e l'errore è passato al .catch().
